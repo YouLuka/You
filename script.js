@@ -1,93 +1,127 @@
-// ==========================
+// ===============================
 // YouLuka Portfolio V2
 // Lightbox Gallery
-// ==========================
+// ===============================
 
 const images = document.querySelectorAll(".grid img");
 
 const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightbox-img");
+const lightboxImage = document.getElementById("lightbox-image");
 
-const closeBtn = document.getElementById("close");
-const prevBtn = document.getElementById("prev");
-const nextBtn = document.getElementById("next");
+const closeButton = document.getElementById("close");
+const previousButton = document.getElementById("prev");
+const nextButton = document.getElementById("next");
 
-let current = 0;
+let currentImage = 0;
 
 // Open image
-function openImage(index) {
-    current = index;
+function openLightbox(index) {
+
+    currentImage = index;
+
     lightbox.style.display = "flex";
-    lightboxImg.src = images[current].src;
+
+    lightboxImage.src = images[currentImage].src;
+
+    lightboxImage.alt = images[currentImage].alt;
+
 }
 
 // Close lightbox
-function closeImage() {
+function closeLightbox() {
+
     lightbox.style.display = "none";
+
 }
 
 // Previous image
 function previousImage() {
-    current--;
 
-    if (current < 0) {
-        current = images.length - 1;
+    currentImage--;
+
+    if(currentImage < 0){
+
+        currentImage = images.length - 1;
+
     }
 
-    lightboxImg.src = images[current].src;
+    lightboxImage.src = images[currentImage].src;
+    lightboxImage.alt = images[currentImage].alt;
+
 }
 
 // Next image
 function nextImage() {
-    current++;
 
-    if (current >= images.length) {
-        current = 0;
+    currentImage++;
+
+    if(currentImage >= images.length){
+
+        currentImage = 0;
+
     }
 
-    lightboxImg.src = images[current].src;
+    lightboxImage.src = images[currentImage].src;
+    lightboxImage.alt = images[currentImage].alt;
+
 }
 
-// Open on click
-images.forEach((img, index) => {
+// Open image on click
+images.forEach((image,index)=>{
 
-    img.addEventListener("click", () => {
-        openImage(index);
+    image.addEventListener("click",()=>{
+
+        openLightbox(index);
+
     });
 
 });
 
-// Buttons
-closeBtn.addEventListener("click", closeImage);
+// Close button
+closeButton.addEventListener("click",closeLightbox);
 
-prevBtn.addEventListener("click", previousImage);
+// Previous button
+previousButton.addEventListener("click",previousImage);
 
-nextBtn.addEventListener("click", nextImage);
+// Next button
+nextButton.addEventListener("click",nextImage);
 
-// Click outside image
-lightbox.addEventListener("click", (e) => {
+// Close when clicking outside image
+lightbox.addEventListener("click",(event)=>{
 
-    if (e.target === lightbox) {
-        closeImage();
+    if(event.target === lightbox){
+
+        closeLightbox();
+
     }
 
 });
 
-// Keyboard navigation
-document.addEventListener("keydown", (e) => {
+// Keyboard controls
+document.addEventListener("keydown",(event)=>{
 
-    if (lightbox.style.display !== "flex") return;
+    if(lightbox.style.display !== "flex") return;
 
-    if (e.key === "Escape") {
-        closeImage();
-    }
+    switch(event.key){
 
-    if (e.key === "ArrowLeft") {
-        previousImage();
-    }
+        case "Escape":
 
-    if (e.key === "ArrowRight") {
-        nextImage();
+            closeLightbox();
+
+        break;
+
+        case "ArrowLeft":
+
+            previousImage();
+
+        break;
+
+        case "ArrowRight":
+
+            nextImage();
+
+        break;
+
     }
 
 });
@@ -96,20 +130,26 @@ document.addEventListener("keydown", (e) => {
 
 let startX = 0;
 
-lightbox.addEventListener("touchstart", (e) => {
-    startX = e.changedTouches[0].screenX;
+lightbox.addEventListener("touchstart",(event)=>{
+
+    startX = event.changedTouches[0].screenX;
+
 });
 
-lightbox.addEventListener("touchend", (e) => {
+lightbox.addEventListener("touchend",(event)=>{
 
-    const endX = e.changedTouches[0].screenX;
+    const endX = event.changedTouches[0].screenX;
 
-    if (endX < startX - 50) {
+    if(endX < startX - 50){
+
         nextImage();
+
     }
 
-    if (endX > startX + 50) {
+    if(endX > startX + 50){
+
         previousImage();
+
     }
 
 });
