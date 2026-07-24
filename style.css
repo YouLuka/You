@@ -1,28 +1,369 @@
-// ==========================================
-// You Luka Portfolio
-// Automatic Gallery
-// ==========================================
+/* ===========================
+   YouLuka Portfolio V2
+=========================== */
 
-// Number of portfolio images (without hero.jpeg)
-const TOTAL_IMAGES = 30;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-// Image extension
-const EXTENSION = "jpeg";
+html{
+    scroll-behavior:smooth;
+}
 
-// Find gallery container
-const gallery = document.querySelector(".gallery");
+body{
+    font-family:'Poppins',sans-serif;
+    background:#0d0d0d;
+    color:white;
+    overflow-x:hidden;
+}
 
-// Create images automatically
-for (let i = 1; i <= TOTAL_IMAGES; i++) {
+/* HERO */
 
-    const img = document.createElement("img");
+.hero{
+    height:100vh;
+    background:url("images/photo1.jpg") center center/cover no-repeat;
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
 
-    img.src = `images/${i}.${EXTENSION}`;
+.overlay{
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.55);
+}
 
-    img.alt = `Portfolio Photo ${i}`;
+.hero-content{
+    position:relative;
+    text-align:center;
+    z-index:2;
+    animation:fade 1.4s;
+}
 
-    img.loading = "lazy";
+.hero h1{
+    font-size:70px;
+    letter-spacing:8px;
+    margin-bottom:15px;
+}
 
-    gallery.appendChild(img);
+.hero p{
+    font-size:22px;
+    color:#d7d7d7;
+    margin-bottom:40px;
+}
+
+.btn{
+    display:inline-block;
+    text-decoration:none;
+    color:white;
+    border:2px solid white;
+    padding:15px 35px;
+    transition:.35s;
+}
+
+.btn:hover{
+    background:white;
+    color:black;
+}
+
+/* GALLERY */
+
+.gallery{
+    padding:90px 8%;
+}
+
+.gallery h2{
+    text-align:center;
+    font-size:42px;
+    margin-bottom:60px;
+}
+
+.grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(280px,1fr));
+
+    gap:20px;
+
+}
+
+.grid img{
+
+    width:100%;
+
+    height:320px;
+
+    object-fit:cover;
+
+    cursor:pointer;
+
+    transition:.4s;
+
+    border-radius:8px;
+
+}
+
+.grid img:hover{
+
+    transform:scale(1.04);
+
+}
+
+/* ABOUT */
+
+.about{
+
+    max-width:900px;
+
+    margin:auto;
+
+    text-align:center;
+
+    padding:100px 30px;
+
+}
+
+.about h2{
+
+    font-size:40px;
+
+    margin-bottom:30px;
+
+}
+
+.about p{
+
+    color:#bdbdbd;
+
+    line-height:1.9;
+
+    font-size:18px;
+
+}
+
+/* CONTACT */
+
+.contact{
+
+    text-align:center;
+
+    padding:100px 20px;
+
+}
+
+.contact h2{
+
+    font-size:40px;
+
+    margin-bottom:20px;
+
+}
+
+.contact p{
+
+    color:#bdbdbd;
+
+    margin-bottom:40px;
+
+}
+
+.contact-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+}
+
+.contact-buttons a{
+
+    text-decoration:none;
+
+    color:white;
+
+    border:1px solid white;
+
+    padding:14px 30px;
+
+    transition:.35s;
+
+}
+
+.contact-buttons a:hover{
+
+    background:white;
+
+    color:black;
+
+}
+
+/* FOOTER */
+
+footer{
+
+    padding:35px;
+
+    text-align:center;
+
+    color:#888;
+
+}
+
+/* LIGHTBOX */
+
+#lightbox{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.95);
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:999;
+
+}
+
+#lightbox img{
+
+    max-width:90%;
+
+    max-height:90%;
+
+    border-radius:8px;
+
+}
+
+#close{
+
+    position:absolute;
+
+    top:25px;
+
+    right:35px;
+
+    font-size:45px;
+
+    cursor:pointer;
+
+}
+
+#prev,
+#next{
+
+    position:absolute;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    font-size:60px;
+
+    color:white;
+
+    background:none;
+
+    border:none;
+
+    cursor:pointer;
+
+    padding:20px;
+
+}
+
+#prev{
+
+    left:20px;
+
+}
+
+#next{
+
+    right:20px;
+
+}
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+
+transform:translateY(25px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero h1{
+
+font-size:46px;
+
+letter-spacing:4px;
+
+}
+
+.hero p{
+
+font-size:18px;
+
+padding:0 20px;
+
+}
+
+.gallery h2,
+.about h2,
+.contact h2{
+
+font-size:32px;
+
+}
+
+.grid{
+
+grid-template-columns:repeat(2,1fr);
+
+gap:12px;
+
+}
+
+.grid img{
+
+height:170px;
+
+}
+
+#prev,
+#next{
+
+font-size:38px;
+
+}
 
 }
