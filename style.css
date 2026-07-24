@@ -1,6 +1,6 @@
-/* ===========================
+/* ====================================
    YouLuka Portfolio V2
-=========================== */
+==================================== */
 
 *{
     margin:0;
@@ -14,17 +14,18 @@ html{
 
 body{
     font-family:'Poppins',sans-serif;
-    background:#0d0d0d;
-    color:white;
+    background:#0f0f0f;
+    color:#ffffff;
     overflow-x:hidden;
 }
 
 /* HERO */
 
 .hero{
+    position:relative;
+    width:100%;
     height:100vh;
     background:url("images/photo1.jpg") center center/cover no-repeat;
-    position:relative;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -38,55 +39,73 @@ body{
 
 .hero-content{
     position:relative;
-    text-align:center;
     z-index:2;
-    animation:fade 1.4s;
+    text-align:center;
+    animation:fadeIn 1.5s ease;
 }
 
 .hero h1{
-    font-size:70px;
+    font-size:72px;
+    font-weight:700;
     letter-spacing:8px;
-    margin-bottom:15px;
+    margin-bottom:20px;
 }
 
 .hero p{
     font-size:22px;
-    color:#d7d7d7;
+    color:#d0d0d0;
     margin-bottom:40px;
 }
 
-.btn{
+.button{
+
     display:inline-block;
-    text-decoration:none;
-    color:white;
+
+    padding:15px 40px;
+
     border:2px solid white;
-    padding:15px 35px;
+
+    color:white;
+
+    text-decoration:none;
+
     transition:.35s;
+
 }
 
-.btn:hover{
+.button:hover{
+
     background:white;
+
     color:black;
+
 }
 
 /* GALLERY */
 
 .gallery{
+
     padding:90px 8%;
+
 }
 
 .gallery h2{
+
     text-align:center;
+
     font-size:42px;
+
     margin-bottom:60px;
+
+    font-weight:600;
+
 }
 
 .grid{
 
     display:grid;
 
-    grid-template-columns:
-    repeat(auto-fit,minmax(280px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 
     gap:20px;
 
@@ -100,11 +119,11 @@ body{
 
     object-fit:cover;
 
+    border-radius:10px;
+
     cursor:pointer;
 
     transition:.4s;
-
-    border-radius:8px;
 
 }
 
@@ -112,9 +131,31 @@ body{
 
     transform:scale(1.04);
 
+    filter:brightness(1.08);
+
 }
 
-/* ABOUT */
+@keyframes fadeIn{
+
+from{
+
+opacity:0;
+
+transform:translateY(30px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}/* ===========================
+   ABOUT
+=========================== */
 
 .about{
 
@@ -122,15 +163,15 @@ body{
 
     margin:auto;
 
-    text-align:center;
-
     padding:100px 30px;
+
+    text-align:center;
 
 }
 
 .about h2{
 
-    font-size:40px;
+    font-size:42px;
 
     margin-bottom:30px;
 
@@ -138,7 +179,7 @@ body{
 
 .about p{
 
-    color:#bdbdbd;
+    color:#c5c5c5;
 
     line-height:1.9;
 
@@ -146,7 +187,9 @@ body{
 
 }
 
-/* CONTACT */
+/* ===========================
+   CONTACT
+=========================== */
 
 .contact{
 
@@ -158,7 +201,7 @@ body{
 
 .contact h2{
 
-    font-size:40px;
+    font-size:42px;
 
     margin-bottom:20px;
 
@@ -172,7 +215,7 @@ body{
 
 }
 
-.contact-buttons{
+.links{
 
     display:flex;
 
@@ -184,21 +227,21 @@ body{
 
 }
 
-.contact-buttons a{
-
-    text-decoration:none;
+.links a{
 
     color:white;
 
-    border:1px solid white;
+    text-decoration:none;
+
+    border:2px solid white;
 
     padding:14px 30px;
 
-    transition:.35s;
+    transition:.3s;
 
 }
 
-.contact-buttons a:hover{
+.links a:hover{
 
     background:white;
 
@@ -206,7 +249,9 @@ body{
 
 }
 
-/* FOOTER */
+/* ===========================
+   FOOTER
+=========================== */
 
 footer{
 
@@ -214,11 +259,15 @@ footer{
 
     text-align:center;
 
-    color:#888;
+    color:#8d8d8d;
+
+    border-top:1px solid #222;
 
 }
 
-/* LIGHTBOX */
+/* ===========================
+   LIGHTBOX
+=========================== */
 
 #lightbox{
 
@@ -226,15 +275,15 @@ footer{
 
     inset:0;
 
-    background:rgba(0,0,0,.95);
-
     display:none;
 
     justify-content:center;
 
     align-items:center;
 
-    z-index:999;
+    background:rgba(0,0,0,.95);
+
+    z-index:9999;
 
 }
 
@@ -260,6 +309,8 @@ footer{
 
     cursor:pointer;
 
+    color:white;
+
 }
 
 #prev,
@@ -271,13 +322,13 @@ footer{
 
     transform:translateY(-50%);
 
-    font-size:60px;
-
-    color:white;
-
     background:none;
 
     border:none;
+
+    color:white;
+
+    font-size:60px;
 
     cursor:pointer;
 
@@ -297,29 +348,17 @@ footer{
 
 }
 
-@keyframes fade{
+/* ===========================
+   MOBILE
+=========================== */
 
-from{
+@media (max-width:768px){
 
-opacity:0;
+.hero{
 
-transform:translateY(25px);
-
-}
-
-to{
-
-opacity:1;
-
-transform:translateY(0);
+height:80vh;
 
 }
-
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
 
 .hero h1{
 
@@ -355,14 +394,28 @@ gap:12px;
 
 .grid img{
 
-height:170px;
+height:180px;
+
+}
+
+.links{
+
+flex-direction:column;
+
+align-items:center;
+
+}
+
+.links a{
+
+width:220px;
 
 }
 
 #prev,
 #next{
 
-font-size:38px;
+font-size:40px;
 
 }
 
