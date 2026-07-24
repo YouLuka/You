@@ -1,82 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>You Luka | Photographer</title>
+    <title>YouLuka | Photography Portfolio</title>
 
     <link rel="stylesheet" href="style.css">
 
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<header>
+<header class="hero">
 
-    <h1>You Luka</h1>
+    <div class="overlay"></div>
 
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-    </nav>
+    <div class="hero-content">
+
+        <h1>YouLuka</h1>
+
+        <p>Every frame tells a story.</p>
+
+        <a href="#gallery" class="btn">
+            Explore Gallery
+        </a>
+
+    </div>
 
 </header>
 
-<section id="home" class="hero">
-    <img src="images/hero.jpeg" alt="You Luka">
-</section>
+<section id="gallery" class="gallery">
 
-<section id="portfolio">
+    <h2>Gallery</h2>
 
-    <h2>Portfolio</h2>
+    <div class="grid">
 
-    <div class="gallery">
-        <!-- Images are added automatically by script.js -->
+        <img src="images/photo1.jpg" alt="">
+        <img src="images/photo2.jpg" alt="">
+        <img src="images/photo3.jpg" alt="">
+        <img src="images/photo4.jpg" alt="">
+        <img src="images/photo5.jpg" alt="">
+        <img src="images/photo6.jpg" alt="">
+        <img src="images/photo7.jpg" alt="">
+        <img src="images/photo8.jpg" alt="">
+        <img src="images/photo9.jpg" alt="">
+        <img src="images/photo10.jpg" alt="">
+        <img src="images/photo11.jpg" alt="">
+        <img src="images/photo12.jpg" alt="">
+
     </div>
 
 </section>
 
-<section id="about">
+<section class="about">
 
     <h2>About</h2>
 
     <p>
-        Welcome to my portfolio.
 
-        Photography allows me to capture authentic emotions,
-        beautiful light and unforgettable moments.
+        YouLuka is a photographer passionate about capturing authentic emotions,
+        natural light, and unforgettable moments.
+        Every photograph is created to tell a unique story through timeless imagery.
 
-        Every image tells a unique story.
     </p>
 
 </section>
 
-<section id="contact">
+<section class="contact">
 
     <h2>Contact</h2>
 
-    <p>Follow me on Instagram.</p>
+    <p>
 
-    <a href="https://instagram.com/Yulia.1334"
-       target="_blank"
-       aria-label="Instagram">
+        Interested in working together or booking a photoshoot?
 
-        <i class="fab fa-instagram"></i>
+    </p>
 
-    </a>
+    <div class="contact-buttons">
+
+        <a href="mailto:youluka31@gmail.com">
+            Email
+        </a>
+
+        <a href="https://instagram.com/Yulia.1334" target="_blank">
+            Instagram
+        </a>
+
+    </div>
 
 </section>
 
 <footer>
 
-    <p>© 2026 You Luka. All rights reserved.</p>
+    <p>
+
+        © 2026 YouLuka. All rights reserved.
+
+    </p>
 
 </footer>
+
+<!-- Fullscreen Viewer -->
+
+<div id="lightbox">
+
+    <span id="close">&times;</span>
+
+    <img id="lightbox-img">
+
+    <button id="prev">&#10094;</button>
+
+    <button id="next">&#10095;</button>
+
+</div>
 
 <script src="script.js"></script>
 
