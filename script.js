@@ -1,1 +1,181 @@
-const TOTAL_IMAGES=50,EXT="jpg";const g=document.querySelector(".gallery"),imgs=[];for(let i=1;i<=TOTAL_IMAGES;i++){const im=document.createElement("img");im.src=`images/${i}.${EXT}`;im.alt=`Photo ${i}`;im.loading="lazy";im.onclick=()=>openBox(i-1);g.appendChild(im);imgs.push(im.src)}const box=document.getElementById("lightbox"),big=document.getElementById("lightbox-img");let cur=0;function openBox(i){cur=i;big.src=imgs[cur];box.classList.add("show")}function show(){big.src=imgs[cur]}document.querySelector(".close").onclick=()=>box.classList.remove("show");box.onclick=e=>{if(e.target===box)box.classList.remove("show")};document.querySelector(".prev").onclick=e=>{e.stopPropagation();cur=(cur-1+imgs.length)%imgs.length;show()};document.querySelector(".next").onclick=e=>{e.stopPropagation();cur=(cur+1)%imgs.length;show()};document.addEventListener("keydown",e=>{if(!box.classList.contains("show"))return;if(e.key==="Escape")box.classList.remove("show");if(e.key==="ArrowLeft")cur=(cur-1+imgs.length)%imgs.length,show();if(e.key==="ArrowRight")cur=(cur+1)%imgs.length,show();});
+```javascript
+// ================================
+// YOU LUKA — PHOTO GALLERIES
+// ================================
+
+const galleries = {
+    ukraine: {
+        total: 50,
+        path: "images/ukraine/",
+        title: "Ukraine"
+    },
+
+    turkey: {
+        total: 50,
+        path: "images/turkey/",
+        title: "Turkey"
+    }
+};
+
+
+// ================================
+// CREATE GALLERIES
+// ================================
+
+const allImages = {};
+
+Object.keys(galleries).forEach(category => {
+
+    const gallery = document.getElementById(`${category}-gallery`);
+
+    if (!gallery) return;
+
+    allImages[category] = [];
+
+    for (let i = 1; i <= galleries[category].total; i++) {
+
+        const img = document.createElement("img");
+
+        img.src = `${galleries[category].path}${i}.jpg`;
+        img.alt = `${galleries[category].title} — Photo ${i}`;
+        img.loading = "lazy";
+
+        const index = allImages[category].length;
+
+        allImages[category].push(img.src);
+
+        img.addEventListener("click", () => {
+            openLightbox(category, index);
+        });
+
+        gallery.appendChild(img);
+    }
+});
+
+
+// ================================
+// LIGHTBOX
+// ================================
+
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+
+let currentCategory = "";
+let currentIndex = 0;
+
+
+// Open photo
+function openLightbox(category, index) {
+
+    currentCategory = category;
+    currentIndex = index;
+
+    updateLightbox();
+
+    lightbox.classList.add("show");
+}
+
+
+// Display current photo
+function updateLightbox() {
+
+    lightboxImg.src = allImages[currentCategory][currentIndex];
+
+    lightboxImg.alt =
+        `${galleries[currentCategory].title} — Photo ${currentIndex + 1}`;
+}
+
+
+// ================================
+// CLOSE
+// ================================
+
+document.querySelector(".close").addEventListener("click", () => {
+    lightbox.classList.remove("show");
+});
+
+
+// Click outside image
+lightbox.addEventListener("click", event => {
+
+    if (event.target === lightbox) {
+        lightbox.classList.remove("show");
+    }
+
+});
+
+
+// ================================
+// PREVIOUS
+// ================================
+
+document.querySelector(".prev").addEventListener("click", event => {
+
+    event.stopPropagation();
+
+    currentIndex--;
+
+    if (currentIndex < 0) {
+        currentIndex = allImages[currentCategory].length - 1;
+    }
+
+    updateLightbox();
+
+});
+
+
+// ================================
+// NEXT
+// ================================
+
+document.querySelector(".next").addEventListener("click", event => {
+
+    event.stopPropagation();
+
+    currentIndex++;
+
+    if (currentIndex >= allImages[currentCategory].length) {
+        currentIndex = 0;
+    }
+
+    updateLightbox();
+
+});
+
+
+// ================================
+// KEYBOARD
+// ================================
+
+document.addEventListener("keydown", event => {
+
+    if (!lightbox.classList.contains("show")) return;
+
+    if (event.key === "Escape") {
+        lightbox.classList.remove("show");
+    }
+
+    if (event.key === "ArrowLeft") {
+
+        currentIndex--;
+
+        if (currentIndex < 0) {
+            currentIndex = allImages[currentCategory].length - 1;
+        }
+
+        updateLightbox();
+    }
+
+    if (event.key === "ArrowRight") {
+
+        currentIndex++;
+
+        if (currentIndex >= allImages[currentCategory].length) {
+            currentIndex = 0;
+        }
+
+        updateLightbox();
+    }
+
+});
+```
