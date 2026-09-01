@@ -154,3 +154,11 @@ nav a{color:#fff;text-decoration:none;font-size:15px}
   nav{gap:8px}
   nav a{font-size:10px}
 }
+.hero.no-hero{min-height:180px;height:180px}
+.hero.no-hero::after{content:"";display:block}
+@media(max-width:650px){
+  .hero{height:62vh;min-height:360px}
+  .hero img{height:calc(62vh - 58px);min-height:302px}
+  .hero.no-hero{height:120px;min-height:120px}
+  .hero.no-hero img{display:none}
+}

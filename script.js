@@ -64,3 +64,23 @@ document.addEventListener("keydown",e=>{
 });
 
 document.getElementById("top").onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
+
+const heroImage=document.getElementById("hero-image");
+if(heroImage){
+  const heroSources=[
+    "images/ukraine/hero.jpg",
+    "images/hero.jpg",
+    "images/ukraine/cover.jpg",
+    "images/cover.jpg"
+  ];
+  let heroTry=0;
+  heroImage.addEventListener("error",function(){
+    heroTry++;
+    if(heroTry<heroSources.length){
+      heroImage.src=heroSources[heroTry];
+    }else{
+      heroImage.style.display="none";
+      document.querySelector(".hero").classList.add("no-hero");
+    }
+  });
+}
