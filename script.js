@@ -27,45 +27,35 @@ document.querySelector(".next").onclick=e=>{e.stopPropagation();const p=allImage
 document.addEventListener("keydown",e=>{if(!lightbox.classList.contains("show"))return;if(e.key==="Escape")closeLightbox();if(e.key==="ArrowLeft")document.querySelector(".prev").click();if(e.key==="ArrowRight")document.querySelector(".next").click()});
 loadGallery("ukraine");loadGallery("turkey");
 
-/* MOBILE SWIPE — LIGHTBOX ONLY */
-let swipeStartX = 0;
-let swipeStartY = 0;
-let swipeActive = false;
+/* MOBILE PHOTO SWIPE — FINAL */
+(function () {
+  let startX = 0;
+  let startY = 0;
 
-lightbox.addEventListener("touchstart", (e) => {
-  if (!lightbox.classList.contains("show") || e.touches.length !== 1) return;
-  swipeStartX = e.touches[0].clientX;
-  swipeStartY = e.touches[0].clientY;
-  swipeActive = true;
-}, {passive:true});
+  lightboxImg.addEventListener("touchstart", function (e) {
+    if (!lightbox.classList.contains("show") || e.touches.length !== 1) return;
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+  }, { passive: true });
 
-lightbox.addEventListener("touchmove", (e) => {
-  if (!swipeActive || !lightbox.classList.contains("show") || e.touches.length !== 1) return;
+  lightboxImg.addEventListener("touchend", function (e) {
+    if (!lightbox.classList.contains("show") || e.changedTouches.length !== 1) return;
 
-  const dx = e.touches[0].clientX - swipeStartX;
-  const dy = e.touches[0].clientY - swipeStartY;
+    const dx = e.changedTouches[0].clientX - startX;
+    const dy = e.changedTouches[0].clientY - startY;
 
-  if (Math.abs(dx) > 12 && Math.abs(dx) > Math.abs(dy)) {
-    e.preventDefault();
-  }
-}, {passive:false});
+    // Ignore taps and vertical movements.
+    if (Math.abs(dx) < 40 || Math.abs(dx) <= Math.abs(dy)) return;
 
-lightbox.addEventListener("touchend", (e) => {
-  if (!swipeActive || !lightbox.classList.contains("show")) return;
-  swipeActive = false;
+    const photos = allImages[currentCategory];
+    if (!photos || photos.length < 2) return;
 
-  const dx = e.changedTouches[0].clientX - swipeStartX;
-  const dy = e.changedTouches[0].clientY - swipeStartY;
+    if (dx < 0) {
+      currentIndex = (currentIndex + 1) % photos.length;
+    } else {
+      currentIndex = (currentIndex - 1 + photos.length) % photos.length;
+    }
 
-  if (Math.abs(dx) < 50 || Math.abs(dx) <= Math.abs(dy)) return;
-
-  const photos = allImages[currentCategory];
-  if (!photos || photos.length < 2) return;
-
-  if (dx < 0) {
-    currentIndex = (currentIndex + 1) % photos.length;
-  } else {
-    currentIndex = (currentIndex - 1 + photos.length) % photos.length;
-  }
-  updateLightbox();
-}, {passive:true});
+    updateLightbox();
+  }, { passive: true });
+})();
