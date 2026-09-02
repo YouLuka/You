@@ -151,3 +151,36 @@ section>h2{font-size:21px;margin-bottom:35px}
     object-fit:contain;
   }
 }
+
+/* HERO — INTRINSIC IMAGE, ZERO CROP / ZERO ZOOM */
+.hero{
+  height:auto !important;
+  min-height:0 !important;
+  padding-top:68px !important;
+  display:block !important;
+  overflow:hidden !important;
+  background:#000 !important;
+}
+.hero-image{
+  display:block !important;
+  width:100% !important;
+  height:auto !important;
+  max-width:100% !important;
+  max-height:none !important;
+  margin:0 auto !important;
+  object-fit:initial !important;
+  object-position:center !important;
+}
+@media(max-width:768px){
+  .hero{
+    height:auto !important;
+    min-height:0 !important;
+    padding-top:58px !important;
+  }
+  .hero-image{
+    width:100% !important;
+    height:auto !important;
+    max-width:100% !important;
+    object-fit:initial !important;
+  }
+}
