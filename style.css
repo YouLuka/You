@@ -118,8 +118,36 @@ section>h2{font-size:21px;margin-bottom:35px}
   }
 }
 
-/* HERO PNG IN IMAGES/UKRAINE */
+/* FINAL RESPONSIVE HERO — never crop or zoom the image */
+.hero{
+  width:100%;
+  height:auto;
+  min-height:0;
+  padding-top:68px;
+  background:#000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
 .hero img{
+  display:block;
+  width:100%;
+  height:auto;
+  max-width:100%;
   object-fit:contain;
   object-position:center;
+}
+
+@media (max-width:768px){
+  .hero{
+    padding-top:58px;
+    height:auto;
+  }
+  .hero img{
+    width:100%;
+    height:auto;
+    max-width:100%;
+    object-fit:contain;
+  }
 }
