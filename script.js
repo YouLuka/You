@@ -27,35 +27,34 @@ document.querySelector(".next").onclick=e=>{e.stopPropagation();const p=allImage
 document.addEventListener("keydown",e=>{if(!lightbox.classList.contains("show"))return;if(e.key==="Escape")closeLightbox();if(e.key==="ArrowLeft")document.querySelector(".prev").click();if(e.key==="ArrowRight")document.querySelector(".next").click()});
 loadGallery("ukraine");loadGallery("turkey");
 
-/* MOBILE SWIPE NAVIGATION */
-let touchStartX = 0;
-let touchStartY = 0;
+/* MOBILE SWIPE NAVIGATION — LIGHTBOX ONLY */
+let swipeStartX = 0;
+let swipeStartY = 0;
+let swipeTracking = false;
 
-lightbox.addEventListener("touchstart", (event) => {
-  if (!lightbox.classList.contains("show")) return;
-  const touch = event.changedTouches[0];
-  touchStartX = touch.clientX;
-  touchStartY = touch.clientY;
+lightbox.addEventListener("touchstart", function(e) {
+  if (!lightbox.classList.contains("show") || e.touches.length !== 1) return;
+  swipeStartX = e.touches[0].clientX;
+  swipeStartY = e.touches[0].clientY;
+  swipeTracking = true;
 }, { passive: true });
 
-lightbox.addEventListener("touchend", (event) => {
-  if (!lightbox.classList.contains("show")) return;
+lightbox.addEventListener("touchend", function(e) {
+  if (!swipeTracking || !lightbox.classList.contains("show")) return;
+  swipeTracking = false;
+  if (!e.changedTouches.length) return;
 
-  const touch = event.changedTouches[0];
-  const deltaX = touch.clientX - touchStartX;
-  const deltaY = touch.clientY - touchStartY;
+  const dx = e.changedTouches[0].clientX - swipeStartX;
+  const dy = e.changedTouches[0].clientY - swipeStartY;
 
-  // Ignore taps and mostly-vertical swipes.
-  if (Math.abs(deltaX) < 45 || Math.abs(deltaX) < Math.abs(deltaY)) return;
+  if (Math.abs(dx) < 50 || Math.abs(dx) <= Math.abs(dy) * 1.2) return;
 
   const photos = allImages[currentCategory];
-  if (!photos || !photos.length) return;
+  if (!photos || photos.length < 2) return;
 
-  if (deltaX < 0) {
-    currentIndex = (currentIndex + 1) % photos.length;
-  } else {
-    currentIndex = (currentIndex - 1 + photos.length) % photos.length;
-  }
+  currentIndex = dx < 0
+    ? (currentIndex + 1) % photos.length
+    : (currentIndex - 1 + photos.length) % photos.length;
 
   updateLightbox();
 }, { passive: true });
