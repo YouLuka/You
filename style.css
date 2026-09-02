@@ -117,3 +117,11 @@ section>h2{font-size:21px;margin-bottom:35px}
     padding:0 8px;
   }
 }
+
+/* FINAL HERO — less zoomed, same image */
+.hero{height:82vh;min-height:520px;padding-top:68px;background:#000;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero img{display:block;width:100%;height:calc(82vh - 68px);object-fit:contain;object-position:center}
+@media(max-width:768px){
+.hero{height:70vh;min-height:390px;padding-top:58px}
+.hero img{width:100%;height:calc(70vh - 58px);object-fit:contain;object-position:center}
+}
