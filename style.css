@@ -124,18 +124,14 @@ section>h2{font-size:21px;margin-bottom:35px}
   content:url("./images/ukraine/hero.png");
 }
 
-/* MOBILE PHOTO SWIPE — FINAL */
+/* MOBILE PHOTO SWIPE — CROSS BROWSER */
 @media (max-width:768px){
-  #lightbox .prev,
-  #lightbox .next{
-    display:none !important;
-  }
-
-  #lightbox,
-  #lightbox-img{
+  #lightbox .prev,#lightbox .next{display:none !important;}
+  #lightbox,#lightbox-img{
     touch-action:none;
+    -ms-touch-action:none;
+    overscroll-behavior:contain;
   }
-
   #lightbox-img{
     user-select:none;
     -webkit-user-select:none;

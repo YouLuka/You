@@ -27,35 +27,37 @@ document.querySelector(".next").onclick=e=>{e.stopPropagation();const p=allImage
 document.addEventListener("keydown",e=>{if(!lightbox.classList.contains("show"))return;if(e.key==="Escape")closeLightbox();if(e.key==="ArrowLeft")document.querySelector(".prev").click();if(e.key==="ArrowRight")document.querySelector(".next").click()});
 loadGallery("ukraine");loadGallery("turkey");
 
-/* MOBILE PHOTO SWIPE — FINAL */
+/* MOBILE PHOTO SWIPE — CROSS BROWSER */
 (function () {
-  let startX = 0;
-  let startY = 0;
-
-  lightboxImg.addEventListener("touchstart", function (e) {
-    if (!lightbox.classList.contains("show") || e.touches.length !== 1) return;
-    startX = e.touches[0].clientX;
-    startY = e.touches[0].clientY;
-  }, { passive: true });
-
-  lightboxImg.addEventListener("touchend", function (e) {
-    if (!lightbox.classList.contains("show") || e.changedTouches.length !== 1) return;
-
-    const dx = e.changedTouches[0].clientX - startX;
-    const dy = e.changedTouches[0].clientY - startY;
-
-    // Ignore taps and vertical movements.
-    if (Math.abs(dx) < 40 || Math.abs(dx) <= Math.abs(dy)) return;
-
-    const photos = allImages[currentCategory];
-    if (!photos || photos.length < 2) return;
-
-    if (dx < 0) {
-      currentIndex = (currentIndex + 1) % photos.length;
-    } else {
-      currentIndex = (currentIndex - 1 + photos.length) % photos.length;
-    }
-
+  let startX=0, startY=0, tracking=false;
+  function begin(x,y){
+    if(!lightbox.classList.contains("show")) return;
+    startX=x; startY=y; tracking=true;
+  }
+  function finish(x,y){
+    if(!tracking || !lightbox.classList.contains("show")) return;
+    tracking=false;
+    const dx=x-startX, dy=y-startY;
+    if(Math.abs(dx)<45 || Math.abs(dx)<=Math.abs(dy)) return;
+    const photos=allImages[currentCategory];
+    if(!photos || photos.length<2) return;
+    currentIndex=dx<0 ? (currentIndex+1)%photos.length :
+                         (currentIndex-1+photos.length)%photos.length;
     updateLightbox();
-  }, { passive: true });
+  }
+  if(window.PointerEvent){
+    lightbox.addEventListener("pointerdown",e=>{
+      if(e.pointerType==="touch") begin(e.clientX,e.clientY);
+    },{passive:true});
+    lightbox.addEventListener("pointerup",e=>{
+      if(e.pointerType==="touch") finish(e.clientX,e.clientY);
+    },{passive:true});
+    lightbox.addEventListener("pointercancel",()=>tracking=false,{passive:true});
+  }
+  lightbox.addEventListener("touchstart",e=>{
+    if(e.touches.length===1) begin(e.touches[0].clientX,e.touches[0].clientY);
+  },{passive:true});
+  lightbox.addEventListener("touchend",e=>{
+    if(e.changedTouches.length===1) finish(e.changedTouches[0].clientX,e.changedTouches[0].clientY);
+  },{passive:true});
 })();
