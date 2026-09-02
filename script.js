@@ -78,3 +78,13 @@ document.addEventListener("keydown",event=>{
  if(event.key==="ArrowLeft")document.querySelector(".prev").click();
  if(event.key==="ArrowRight")document.querySelector(".next").click();
 });
+
+// Mobile swipe support for the fullscreen viewer.
+let touchStartX=0;
+lightbox.addEventListener("touchstart",e=>{touchStartX=e.changedTouches[0].screenX},{passive:true});
+lightbox.addEventListener("touchend",e=>{
+ const dx=e.changedTouches[0].screenX-touchStartX;
+ if(Math.abs(dx)<45)return;
+ if(dx<0)document.querySelector(".next").click();
+ else document.querySelector(".prev").click();
+},{passive:true});
