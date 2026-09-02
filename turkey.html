@@ -7,67 +7,45 @@
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
-<body id="home">
+<body id="turkey">
 <header>
-  <h1><a class="logo" href="#home">You Luka</a></h1>
-  <nav class="site-nav" aria-label="Main navigation">
-<a href="index.html">HOME</a>
-<a href="ukraine.html">UKRAINE</a>
-<a href="turkey.html">TURKEY</a>
-<a href="#about">ABOUT</a>
-<a href="#contact">CONTACT</a>
-</nav>
+  <h1><a class="logo" href="index.html">You Luka</a></h1>
+  <nav aria-label="Main navigation">
+    <a href="index.html">HOME</a>
+    <a href="ukraine.html">UKRAINE</a>
+    <a href="turkey.html">TURKEY</a>
+    <a href="#about">ABOUT</a>
+    <a href="#contact">CONTACT</a>
+  </nav>
 </header>
 
-<section class="hero" aria-label="You Luka">
-  <img class="hero-image" src="./images/turkey/cover.png alt="You Luka"
-       onerror="this.style.display='none'; this.parentElement.classList.add('hero-fallback');">
+<section class="series-page">
+  <div class="series-cover">
+    <img src="images/turkey/cover.png" alt="TURKEY cover">
+  </div>
+  <div class="category-header">
+    <h2>TURKEY</h2>
+    <p>Documentary photography</p>
+    <p class="series-description">Turkey is my second country. This collection is a personal look at a place that is deeply connected to my life, including moments shared with my husband, who supports me greatly in my work.</p>
+  </div>
+  <div id="turkey-gallery" class="gallery"></div>
 </section>
-
-<section id="portfolio">
-<h2>Portfolio</h2>
-<div class="categories">
-<a href="#ukraine" class="category"><img src="images/ukraine/cover.png" alt="Ukraine"><div class="category-overlay"><h3>Ukraine</h3><span>View gallery</span></div></a>
-<a href="#turkey" class="category"><img src="images/turkey/cover.png" alt="Turkey"><div class="category-overlay"><h3>Turkey</h3><span>View gallery</span></div></a>
-</div>
-<div id="ukraine" class="portfolio-category">
-<div class="category-header">
-<h2>Ukraine</h2>
-<p>Documentary photography</p>
-<p class="series-description">A photographic record of Ukraine, documenting people, places and everyday moments through war, resilience and memory.</p>
-</div>
-<div id="ukraine-gallery" class="gallery"></div>
-</div>
-<div id="turkey" class="portfolio-category">
-<div class="category-header">
-<h2>Turkey</h2>
-<p>Documentary photography</p>
-<p class="series-description">Turkey is my second country. This collection is a personal look at a place that is deeply connected to my life, including moments shared with my husband, who supports me greatly in my work.</p>
-</div>
-<div id="turkey-gallery" class="gallery"></div>
-</div>
-</section>
-
 <section id="about">
 <h2>About</h2>
 <p>Photography is more than capturing images — it is about preserving emotions, light, and authentic moments.<br><br>
-My work focuses on natural expressions, meaningful details, and stories that deserve to be remembered.<br><br>
-Welcome to my world.</p>
+My work focuses on natural expressions, meaningful details, and stories that deserve to be remembered.</p>
 </section>
-
 <section id="contact">
 <h2>Contact</h2>
-<a href="https://instagram.com/Yulia.1334" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+<a href="https://instagram.com/Yulia.1334" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
 </section>
-
 <a id="back-to-top" href="#home" aria-label="Back to top">↑</a>
-
 <div id="lightbox" class="lightbox">
 <button class="close" aria-label="Close">&times;</button>
 <button class="prev" aria-label="Previous">&#10094;</button>
 <img id="lightbox-img" alt="">
 <button class="next" aria-label="Next">&#10095;</button>
 </div>
-<script src="script.js"></script>
+<script src="script.js?v=final4"></script>
 </body>
 </html>

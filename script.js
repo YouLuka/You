@@ -25,7 +25,8 @@ lightbox.onclick=e=>{if(e.target===lightbox)closeLightbox()};
 document.querySelector(".prev").onclick=e=>{e.stopPropagation();const p=allImages[currentCategory];if(p.length){currentIndex=(currentIndex-1+p.length)%p.length;updateLightbox()}};
 document.querySelector(".next").onclick=e=>{e.stopPropagation();const p=allImages[currentCategory];if(p.length){currentIndex=(currentIndex+1)%p.length;updateLightbox()}};
 document.addEventListener("keydown",e=>{if(!lightbox.classList.contains("show"))return;if(e.key==="Escape")closeLightbox();if(e.key==="ArrowLeft")document.querySelector(".prev").click();if(e.key==="ArrowRight")document.querySelector(".next").click()});
-loadGallery("ukraine");loadGallery("turkey");
+if (document.getElementById("ukraine-gallery")) loadGallery("ukraine");
+if (document.getElementById("turkey-gallery")) loadGallery("turkey");
 
 /* MOBILE PHOTO SWIPE — FINAL */
 (function () {
