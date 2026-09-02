@@ -26,3 +26,36 @@ document.querySelector(".prev").onclick=e=>{e.stopPropagation();const p=allImage
 document.querySelector(".next").onclick=e=>{e.stopPropagation();const p=allImages[currentCategory];if(p.length){currentIndex=(currentIndex+1)%p.length;updateLightbox()}};
 document.addEventListener("keydown",e=>{if(!lightbox.classList.contains("show"))return;if(e.key==="Escape")closeLightbox();if(e.key==="ArrowLeft")document.querySelector(".prev").click();if(e.key==="ArrowRight")document.querySelector(".next").click()});
 loadGallery("ukraine");loadGallery("turkey");
+
+/* MOBILE SWIPE NAVIGATION */
+let touchStartX = 0;
+let touchStartY = 0;
+
+lightbox.addEventListener("touchstart", (event) => {
+  if (!lightbox.classList.contains("show")) return;
+  const touch = event.changedTouches[0];
+  touchStartX = touch.clientX;
+  touchStartY = touch.clientY;
+}, { passive: true });
+
+lightbox.addEventListener("touchend", (event) => {
+  if (!lightbox.classList.contains("show")) return;
+
+  const touch = event.changedTouches[0];
+  const deltaX = touch.clientX - touchStartX;
+  const deltaY = touch.clientY - touchStartY;
+
+  // Ignore taps and mostly-vertical swipes.
+  if (Math.abs(deltaX) < 45 || Math.abs(deltaX) < Math.abs(deltaY)) return;
+
+  const photos = allImages[currentCategory];
+  if (!photos || !photos.length) return;
+
+  if (deltaX < 0) {
+    currentIndex = (currentIndex + 1) % photos.length;
+  } else {
+    currentIndex = (currentIndex - 1 + photos.length) % photos.length;
+  }
+
+  updateLightbox();
+}, { passive: true });

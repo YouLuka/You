@@ -123,3 +123,11 @@ section>h2{font-size:21px;margin-bottom:35px}
 .hero-image{
   content:url("./images/ukraine/hero.png");
 }
+
+/* MOBILE LIGHTBOX ARROWS HIDDEN */
+@media (max-width: 768px){
+  .lightbox .prev,
+  .lightbox .next{
+    display:none !important;
+  }
+}
