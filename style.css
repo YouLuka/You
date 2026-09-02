@@ -118,33 +118,37 @@ section>h2{font-size:21px;margin-bottom:35px}
   }
 }
 
-/* HERO — USER CROPPED PNG */
+/* HERO — SAME SIMPLE BEHAVIOUR AS YOU-LUKA */
 .hero{
   width:100%;
-  padding:68px 0 0;
+  height:auto;
+  min-height:0;
   margin:0;
+  padding:0;
   background:#000;
-  display:flex;
-  justify-content:center;
-  align-items:flex-start;
   overflow:hidden;
+  display:block;
 }
 .hero img,
 .hero-image{
   display:block;
   width:100%;
   height:auto;
-  max-width:100%;
-  margin:0 auto;
+  max-width:none;
+  margin:0;
   object-fit:initial;
   object-position:center;
 }
 @media(max-width:768px){
-  .hero{padding-top:58px;}
+  .hero{
+    width:100%;
+    height:auto;
+    padding:0;
+  }
   .hero img,
   .hero-image{
     width:100%;
     height:auto;
-    max-width:100%;
+    max-width:none;
   }
 }
