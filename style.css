@@ -134,3 +134,20 @@ section>h2{font-size:21px;margin-bottom:35px}
     -webkit-user-drag:none;
   }
 }
+
+/* MOBILE LIGHTBOX SWIPE */
+@media (max-width:768px){
+  #lightbox .prev,
+  #lightbox .next{
+    display:none !important;
+  }
+  #lightbox{
+    touch-action:pan-y;
+  }
+  #lightbox-img{
+    touch-action:pan-y;
+    user-select:none;
+    -webkit-user-select:none;
+    -webkit-user-drag:none;
+  }
+}
