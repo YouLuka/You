@@ -283,7 +283,14 @@ section>h2{font-size:21px;margin-bottom:35px}
 .gallery-card-info{display:grid;grid-template-columns:45px 1fr auto;align-items:center;gap:14px;padding:16px 4px 0}
 .gallery-card .gallery-name{font-size:clamp(22px,3vw,36px)}
 .gallery-card .gallery-type{font-size:9px;letter-spacing:.14em;text-transform:uppercase;opacity:.5}
+.instagram-link{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border:1px solid rgba(255,255,255,.35);border-radius:50%;color:inherit!important;text-decoration:none!important;font-size:30px;line-height:1}
+.instagram-link:hover{opacity:.6;transform:scale(1.05)}
+@media(max-width:768px){.gallery-cards{grid-template-columns:1fr;gap:38px}.gallery-card-info{grid-template-columns:35px 1fr}.gallery-card .gallery-type{grid-column:2}}
 
+/* FINAL COVER FIX — never stretch or crop the original cover */
+.gallery-cards .gallery-card{
+  overflow:hidden;
+}
 .gallery-cards .gallery-card img{
   width:100%;
   height:auto;
@@ -357,84 +364,320 @@ section>h2{font-size:21px;margin-bottom:35px}
   }
 }
 
-/* =========================================================
-   YOU LUKA — CLEAN FINAL FOOTER
-   ABOUT centered above CONTACT
-   ========================================================= */
+/* MOBILE GALLERY NAV — Home left, next gallery right */
+@media(max-width:768px){
+  .pro-nav{
+    width:100%;
+    box-sizing:border-box;
+    padding-left:5%;
+    padding-right:5%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:0;
+  }
+  .pro-nav a{
+    display:block;
+    max-width:46%;
+  }
+  .pro-nav a:first-child{text-align:left;}
+  .pro-nav a:last-child{text-align:right;}
+}
+
+/* ABOUT / CONTACT — clean editorial footer */
 .site-footer{
-  box-sizing:border-box;
-  width:100%;
-  max-width:900px;
+  max-width:1100px;
   margin:120px auto 0;
-  padding:70px 30px 60px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:46px;
+  padding:70px 5% 55px;
+  display:grid;
+  grid-template-columns:minmax(0,1.5fr) minmax(180px,.7fr);
+  column-gap:120px;
   border-top:1px solid rgba(127,127,127,.22);
-  text-align:center;
 }
-.site-footer .footer-section,
-.site-footer .footer-contact{
-  width:100%;
-  margin:0;
-  padding:0;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-}
-.site-footer .footer-label{
+.footer-section{min-width:0}
+.footer-label{
   margin:0 0 18px;
-  padding:0;
-  width:100%;
-  text-align:center;
   font-size:9px;
-  line-height:1.2;
-  letter-spacing:.22em;
+  letter-spacing:.2em;
   text-transform:uppercase;
-  opacity:.48;
+  opacity:.5;
 }
-.site-footer .footer-text{
-  width:100%;
-  max-width:650px;
-  margin:0 auto;
-  padding:0;
-  text-align:center;
+.footer-text{
+  max-width:560px;
+  margin:0;
   font-size:12px;
   line-height:1.9;
-  opacity:.7;
+  opacity:.72;
 }
-.site-footer .instagram-link{
-  width:28px;
-  height:28px;
-  margin:14px auto 0;
-  padding:0;
+.footer-contact{
   display:flex;
-  align-items:center;
-  justify-content:center;
-  border:0;
-  text-decoration:none;
-  color:inherit;
-  opacity:.78;
+  flex-direction:column;
+  align-items:flex-start;
 }
-.site-footer .instagram-link svg{
-  width:22px;
-  height:22px;
+.instagram-link{
+  width:auto!important;
+  height:auto!important;
+  border:0!important;
+  border-radius:0!important;
+  display:inline-flex!important;
+  align-items:center;
+  gap:10px;
+  color:inherit!important;
+  text-decoration:none!important;
+  font-size:10px;
+  letter-spacing:.1em;
+  transition:opacity .2s ease;
+}
+.instagram-link svg{
+  width:23px;
+  height:23px;
   display:block;
+}
+.instagram-link:hover{
+  opacity:.55;
+  transform:none!important;
 }
 @media(max-width:768px){
   .site-footer{
+    margin-top:85px;
+    padding:50px 5% 40px;
+    grid-template-columns:1fr;
+    row-gap:42px;
+  }
+  .footer-text{max-width:100%}
+}
+
+/* =========================================================
+   YOU LUKA — FINAL UNIFIED RESPONSIVE OVERRIDES
+   Designed for desktop + Android + iOS + major browsers
+   ========================================================= */
+
+/* HOME COVERS: identical visual frame */
+.gallery-cards{
+  display:grid !important;
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  gap:32px !important;
+  align-items:start;
+}
+.gallery-cards .gallery-card{
+  display:block;
+  width:100%;
+  min-width:0;
+  overflow:hidden;
+}
+.gallery-cards .gallery-card img{
+  display:block;
+  width:100% !important;
+  height:clamp(240px,31vw,430px) !important;
+  aspect-ratio:auto !important;
+  object-fit:cover !important;
+  object-position:center center !important;
+  background:#111;
+  transform:none !important;
+}
+.gallery-card-info{
+  min-height:58px;
+  padding-top:16px;
+}
+
+/* GALLERY SWITCHER: always separated left/right */
+.pro-nav{
+  width:100%;
+  max-width:1250px;
+  box-sizing:border-box;
+  margin:0 auto;
+  padding:0 5% 42px !important;
+  display:flex !important;
+  align-items:center;
+  justify-content:space-between !important;
+  gap:clamp(70px,18vw,260px) !important;
+}
+.pro-nav a{
+  flex:0 1 auto;
+  max-width:42%;
+  white-space:nowrap;
+}
+.pro-nav a:first-child{text-align:left;margin-right:auto}
+.pro-nav a:last-child{text-align:right;margin-left:auto}
+
+/* CLEAN ABOUT / CONTACT */
+.site-footer{
+  max-width:1100px !important;
+  margin:125px auto 0 !important;
+  padding:72px 5% 60px !important;
+  display:grid !important;
+  grid-template-columns:minmax(0,1fr) minmax(140px,.45fr) !important;
+  column-gap:clamp(60px,10vw,150px) !important;
+  row-gap:55px !important;
+  border-top:1px solid rgba(127,127,127,.22);
+}
+.footer-section{min-width:0}
+.footer-label{
+  margin:0 0 20px !important;
+  font-size:9px !important;
+  line-height:1.2;
+  letter-spacing:.22em !important;
+  text-transform:uppercase;
+  opacity:.48;
+}
+.footer-text{
+  max-width:560px;
+  margin:0 !important;
+  font-size:12px;
+  line-height:2 !important;
+  opacity:.7;
+}
+.footer-contact{
+  display:flex !important;
+  flex-direction:column;
+  align-items:flex-start !important;
+}
+.instagram-link{
+  width:30px !important;
+  height:30px !important;
+  display:inline-flex !important;
+  align-items:center;
+  justify-content:center;
+  border:0 !important;
+  padding:0 !important;
+  margin-top:2px;
+  color:inherit !important;
+  text-decoration:none !important;
+  opacity:.78;
+}
+.instagram-link svg{
+  width:23px !important;
+  height:23px !important;
+  display:block;
+}
+.instagram-link:hover{opacity:.5;transform:none!important}
+
+/* Avoid horizontal overflow on any device */
+html,body{max-width:100%;overflow-x:hidden}
+
+/* Android/iOS and narrow screens */
+@media (max-width:768px){
+  .gallery-cards{
+    grid-template-columns:1fr !important;
+    gap:42px !important;
+  }
+  .gallery-cards .gallery-card img{
+    width:100% !important;
+    height:clamp(220px,58vw,340px) !important;
+    object-fit:cover !important;
+  }
+  .gallery-card-info{
+    min-height:0;
+    padding-top:13px;
+  }
+
+  .pro-nav{
+    padding-left:6% !important;
+    padding-right:6% !important;
+    padding-bottom:34px !important;
+    gap:clamp(90px,26vw,180px) !important;
+  }
+  .pro-nav a{
+    max-width:38%;
+    font-size:9px;
+    letter-spacing:.1em;
+  }
+
+  .site-footer{
+    margin-top:90px !important;
+    padding:58px 6% 45px !important;
+    grid-template-columns:1fr !important;
+    row-gap:48px !important;
+  }
+  .footer-text{
     max-width:100%;
-    margin-top:90px;
-    padding:58px 24px 45px;
-    gap:44px;
+    line-height:1.9 !important;
   }
-  .site-footer .footer-text{
-    max-width:600px;
-    font-size:11px;
-    line-height:1.9;
+}
+
+/* Very small Android/iPhone screens */
+@media (max-width:390px){
+  .pro-nav{
+    padding-left:6% !important;
+    padding-right:6% !important;
+    gap:55px !important;
   }
+  .pro-nav a{max-width:40%;font-size:8px}
+}
+
+/* Desktop: keep both cover cards equal */
+@media (min-width:769px){
+  .gallery-cards .gallery-card img{
+    height:clamp(260px,30vw,430px) !important;
+  }
+}
+
+/* FINAL TEXT + NAVIGATION */
+.pro-header,.pro-header .pro-kicker,.pro-title{text-align:center!important}
+.pro-series,.pro-series *{text-align:center!important}
+.pro-description{max-width:700px;margin:22px auto 0!important;font-size:12px;line-height:1.9;opacity:.68}
+.pro-nav a{font-size:11px!important;letter-spacing:.12em;padding:10px 0}
+.pro-nav-bottom{max-width:1250px;margin:0 auto;padding:45px 5% 70px}
+.pro-nav-bottom .pro-nav{padding:0!important}
+@media(max-width:768px){
+.pro-description{max-width:92%;font-size:11px;line-height:1.85}
+.pro-nav{padding-left:6%!important;padding-right:6%!important;gap:clamp(100px,30vw,190px)!important}
+.pro-nav a{font-size:10px!important;padding:12px 0}
+.pro-nav-bottom{padding:35px 6% 55px}
+}
+
+/* LAST FINAL POLISH */
+.brand{color:#fff!important;text-decoration:none!important;font-weight:700;font-size:30px;letter-spacing:-1.5px;line-height:1}
+.brand:hover{opacity:1!important}
+.pro-series .pro-kicker{display:none!important}
+.pro-series h1{margin-top:0!important}
+.pro-nav a{font-size:13px!important;letter-spacing:.12em!important;font-weight:500}
+.pro-nav-bottom{padding-top:75px!important;margin-top:25px!important}
+.site-footer{align-items:start!important}
+.footer-section{display:flex!important;flex-direction:column!important;align-items:flex-start!important}
+.footer-label{margin-bottom:22px!important}
+.footer-text{margin-top:0!important}
+.instagram-link{margin-top:12px!important}
+@media(max-width:768px){
+ .brand{font-size:24px}
+ .pro-nav a{font-size:12px!important}
+ .pro-nav-bottom{padding-top:90px!important;margin-top:30px!important}
+ .site-footer{row-gap:52px!important}
+ .footer-section{align-items:flex-start!important}
+ .instagram-link{margin-top:16px!important}
+}
+
+/* FINAL LAST FIX — ABOUT / CONTACT centered and stacked */
+.site-footer{
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  text-align:center !important;
+  gap:48px !important;
+  max-width:900px !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+}
+.site-footer .footer-section,
+.site-footer .footer-contact{
+  width:100% !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  text-align:center !important;
+}
+.site-footer .footer-label,
+.site-footer .footer-text{
+  text-align:center !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+}
+.site-footer .footer-text{
+  max-width:650px !important;
+}
+.site-footer .instagram-link{
+  margin-left:auto !important;
+  margin-right:auto !important;
+  margin-top:16px !important;
 }
