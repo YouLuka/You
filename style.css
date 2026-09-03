@@ -646,3 +646,38 @@ html,body{max-width:100%;overflow-x:hidden}
  .footer-section{align-items:flex-start!important}
  .instagram-link{margin-top:16px!important}
 }
+
+/* FINAL LAST FIX — ABOUT / CONTACT centered and stacked */
+.site-footer{
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  text-align:center !important;
+  gap:48px !important;
+  max-width:900px !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+}
+.site-footer .footer-section,
+.site-footer .footer-contact{
+  width:100% !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  text-align:center !important;
+}
+.site-footer .footer-label,
+.site-footer .footer-text{
+  text-align:center !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+}
+.site-footer .footer-text{
+  max-width:650px !important;
+}
+.site-footer .instagram-link{
+  margin-left:auto !important;
+  margin-right:auto !important;
+  margin-top:16px !important;
+}
