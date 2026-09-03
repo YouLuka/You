@@ -325,3 +325,41 @@ section>h2{font-size:21px;margin-bottom:35px}
   user-select:none;
   -webkit-user-drag:none;
 }
+
+/* FINAL COVER LAYOUT — both covers have exactly the same dimensions */
+.gallery-cards{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:28px;
+  align-items:start;
+}
+.gallery-cards .gallery-card{
+  width:100%;
+  overflow:hidden;
+}
+.gallery-cards .gallery-card img{
+  display:block;
+  width:100%;
+  height:clamp(220px, 30vw, 430px);
+  aspect-ratio:auto !important;
+  object-fit:cover !important;
+  object-position:center center;
+  background:#000;
+  transition:opacity .4s ease;
+}
+.gallery-cards .gallery-card:hover img{
+  transform:none !important;
+  opacity:.82;
+}
+@media(max-width:768px){
+  .gallery-cards{
+    grid-template-columns:1fr;
+    gap:38px;
+  }
+  .gallery-cards .gallery-card img{
+    width:100%;
+    height:clamp(210px, 58vw, 330px);
+    object-fit:cover !important;
+    object-position:center center;
+  }
+}
