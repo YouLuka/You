@@ -1,52 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>You Luka — Photography</title>
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-</head>
-<body id="home">
-<a id="home"></a>
-<header>
-  <h1><a class="logo" href="index.html">You Luka</a></h1>
-  <nav aria-label="Main navigation">
-    <a href="index.html">HOME</a>
-    <a href="ukraine.html">UKRAINE</a>
-    <a href="turkey.html">TURKEY</a>
-    <a href="#about">ABOUT</a>
-    <a href="#contact">CONTACT</a>
-  </nav>
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You Luka — Photography</title><link rel="stylesheet" href="style.css"></head><body>
+<header class="site-header">
+<a class="brand" href="index.html">You Luka</a>
+<nav>
+<a href="index.html">HOME</a>
+<a href="ukraine.html">UKRAINE</a>
+<a href="turkey.html">TURKEY</a>
+<a href="#about">ABOUT</a>
+<a href="#contact">CONTACT</a>
+</nav>
 </header>
-
-<section class="hero" aria-label="You Luka">
-  <img class="hero-image" src="./images/ukraine/hero.png" alt="You Luka"
-       onerror="this.style.display='none'; this.parentElement.classList.add('hero-fallback');">
+<section class="hero"><img class="hero-image" src="./images/ukraine/hero.png" alt="You Luka"></section>
+<section class="pro-header"><p class="pro-kicker">Selected work</p><h1 class="pro-title">Galleries</h1></section>
+<section class="gallery-list">
+<a class="gallery-link" href="ukraine.html"><span class="gallery-no">01</span><span class="gallery-name">Ukraine</span><span class="gallery-type">Documentary</span></a>
+<a class="gallery-link" href="turkey.html"><span class="gallery-no">02</span><span class="gallery-name">Turkey</span><span class="gallery-type">Documentary / Personal</span></a>
 </section>
-<section id="portfolio">
-<h2>Portfolio</h2>
-<div class="categories">
-<a href="ukraine.html" class="category"><img src="images/ukraine/cover.png" alt="Ukraine"><div class="category-overlay"><h3>Ukraine</h3><span>View gallery</span></div></a>
-<a href="turkey.html" class="category"><img src="images/turkey/cover.png" alt="Turkey"><div class="category-overlay"><h3>Turkey</h3><span>View gallery</span></div></a>
-</div>
-</section>
-<section id="about">
-<h2>About</h2>
-<p>Photography is more than capturing images — it is about preserving emotions, light, and authentic moments.<br><br>
-My work focuses on natural expressions, meaningful details, and stories that deserve to be remembered.</p>
-</section>
-<section id="contact">
-<h2>Contact</h2>
-<a href="https://instagram.com/Yulia.1334" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-</section>
-<a id="back-to-top" href="#home" aria-label="Back to top">↑</a>
-<div id="lightbox" class="lightbox">
+<footer id="about" class="site-footer">
+<div><h2>About</h2><p>Documentary photography focused on people, places and stories that deserve to be remembered.</p></div>
+<div id="contact"><h2>Contact</h2><a href="mailto:contact@youluka.com">CONTACT</a></div>
+</footer><div id="lightbox" class="lightbox">
 <button class="close" aria-label="Close">&times;</button>
 <button class="prev" aria-label="Previous">&#10094;</button>
 <img id="lightbox-img" alt="">
 <button class="next" aria-label="Next">&#10095;</button>
-</div>
-<script src="script.js?v=final4"></script>
-</body>
-</html>
+</div><script src="script.js?v=pro2"></script></body></html>

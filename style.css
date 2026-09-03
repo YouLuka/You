@@ -246,3 +246,31 @@ section>h2{font-size:21px;margin-bottom:35px}
     height:46px;
   }
 }
+
+/* YOU LUKA PRO — gallery selector and automatic counters */
+.pro-header{max-width:1250px;margin:0 auto;padding:80px 5% 35px}
+.pro-kicker{font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:.55;margin:0 0 12px}
+.pro-title{font-size:clamp(32px,5vw,58px);font-weight:400;margin:0}
+.gallery-list{max-width:1250px;margin:20px auto 100px;padding:0 5%}
+.gallery-link{display:grid;grid-template-columns:70px 1fr auto;gap:25px;align-items:center;padding:28px 0;border-top:1px solid rgba(127,127,127,.28);color:inherit;text-decoration:none}
+.gallery-link:last-child{border-bottom:1px solid rgba(127,127,127,.28)}
+.gallery-link:hover{opacity:.6}
+.gallery-no{font-size:10px;opacity:.5;letter-spacing:.12em}
+.gallery-name{font-size:clamp(24px,3vw,40px);font-weight:400}
+.gallery-type{font-size:9px;letter-spacing:.14em;text-transform:uppercase;opacity:.5}
+.pro-series{max-width:1250px;margin:0 auto;padding:80px 5% 25px}
+.pro-series h2{font-size:clamp(32px,5vw,58px);font-weight:400;margin:0}
+.pro-sub{font-size:10px;letter-spacing:.15em;text-transform:uppercase;opacity:.55;margin-top:10px}
+.pro-count{font-size:10px;letter-spacing:.12em;opacity:.55;margin-top:16px}
+.pro-nav{max-width:1250px;margin:0 auto;padding:0 5% 35px;display:flex;justify-content:space-between}
+.pro-nav a{color:inherit;text-decoration:none;font-size:10px;letter-spacing:.13em;text-transform:uppercase}
+#lightbox-counter{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);color:#fff;font-size:10px;letter-spacing:.15em;z-index:20}
+@media(max-width:768px){
+ .pro-header{padding:55px 5% 25px}
+ .gallery-list{margin-bottom:65px}
+ .gallery-link{grid-template-columns:35px 1fr;gap:12px;padding:22px 0}
+ .gallery-type{grid-column:2}
+ .pro-series{padding:55px 5% 20px}
+ .pro-nav{padding-bottom:28px}
+ #lightbox .prev,#lightbox .next{display:none!important}
+}
