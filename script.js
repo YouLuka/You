@@ -57,12 +57,21 @@ document.addEventListener("keydown",e=>{if(!lightbox?.classList.contains("show")
  const begin=(x,y)=>{if(lightbox.classList.contains("show")){sx=x;sy=y;tracking=true;}};
  const end=(x,y)=>{if(!tracking)return;tracking=false;const dx=x-sx,dy=y-sy;if(Math.abs(dx)<45||Math.abs(dx)<=Math.abs(dy))return;dx<0?next():prev();};
  if(window.PointerEvent){
-  lightbox.addEventListener("pointerdown",e=>{if(e.pointerType==="touch")begin(e.clientX,e.clientY)},{passive:true});
-  lightbox.addEventListener("pointerup",e=>{if(e.pointerType==="touch")end(e.clientX,e.clientY)},{passive:true});
+  lightbox.addEventListener("pointerdown",e=>{
+    if(e.pointerType==="touch") begin(e.clientX,e.clientY);
+  },{passive:true});
+  lightbox.addEventListener("pointerup",e=>{
+    if(e.pointerType==="touch") end(e.clientX,e.clientY);
+  },{passive:true});
   lightbox.addEventListener("pointercancel",()=>tracking=false,{passive:true});
+ }else{
+  lightbox.addEventListener("touchstart",e=>{
+    if(e.touches.length===1) begin(e.touches[0].clientX,e.touches[0].clientY);
+  },{passive:true});
+  lightbox.addEventListener("touchend",e=>{
+    if(e.changedTouches.length===1) end(e.changedTouches[0].clientX,e.changedTouches[0].clientY);
+  },{passive:true});
  }
- lightbox.addEventListener("touchstart",e=>{if(e.touches.length===1)begin(e.touches[0].clientX,e.touches[0].clientY)},{passive:true});
- lightbox.addEventListener("touchend",e=>{if(e.changedTouches.length===1)end(e.changedTouches[0].clientX,e.changedTouches[0].clientY)},{passive:true});
 })();
 document.addEventListener("DOMContentLoaded",()=>{
  if(document.getElementById("ukraine-gallery"))loadGallery("ukraine");
