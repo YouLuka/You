@@ -625,3 +625,24 @@ html,body{max-width:100%;overflow-x:hidden}
 .pro-nav a{font-size:10px!important;padding:12px 0}
 .pro-nav-bottom{padding:35px 6% 55px}
 }
+
+/* LAST FINAL POLISH */
+.brand{color:#fff!important;text-decoration:none!important;font-weight:700;font-size:30px;letter-spacing:-1.5px;line-height:1}
+.brand:hover{opacity:1!important}
+.pro-series .pro-kicker{display:none!important}
+.pro-series h1{margin-top:0!important}
+.pro-nav a{font-size:13px!important;letter-spacing:.12em!important;font-weight:500}
+.pro-nav-bottom{padding-top:75px!important;margin-top:25px!important}
+.site-footer{align-items:start!important}
+.footer-section{display:flex!important;flex-direction:column!important;align-items:flex-start!important}
+.footer-label{margin-bottom:22px!important}
+.footer-text{margin-top:0!important}
+.instagram-link{margin-top:12px!important}
+@media(max-width:768px){
+ .brand{font-size:24px}
+ .pro-nav a{font-size:12px!important}
+ .pro-nav-bottom{padding-top:90px!important;margin-top:30px!important}
+ .site-footer{row-gap:52px!important}
+ .footer-section{align-items:flex-start!important}
+ .instagram-link{margin-top:16px!important}
+}
